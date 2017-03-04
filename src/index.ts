@@ -9,7 +9,7 @@ export default class David extends Module {
   async setup () {
     this.davidConfig = this.prepareConfig('david', defaultConfig)
 
-    const manifest = require(`${this.davidConfig.manifestPath}/package.json`)
+    const manifest = require(`${this.config.baseDirPath}/package.json`)
     david.getUpdatedDependencies(manifest, this.davidConfig, (er, deps) => {
       this.log.info('latest dependencies information for', manifest.name)
       this.listDependencies(deps)
