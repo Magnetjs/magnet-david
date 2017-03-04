@@ -1,1 +1,1 @@
-{"version":3,"file":"david.js","sourceRoot":"","sources":["../../src/config/david.ts"],"names":[],"mappings":";;AAAA,oDAAoD;AACpD,kBAAe;IACb,MAAM,EAAE,IAAI;IACZ,YAAY,EAAE,OAAO;IACrB,KAAK,EAAE,EAAE;CACV,CAAA"}
+{"version":3,"file":"david.js","sourceRoot":"","sources":["../../src/config/david.ts"],"names":[],"mappings":";;AAAA,oDAAoD;AACpD,kBAAe;IACb,MAAM,EAAE,IAAI;IACZ,KAAK,EAAE,EAAE;CACV,CAAA"}
