@@ -11,7 +11,7 @@ export default class David extends Module {
 
     const manifest = require(`${this.config.baseDirPath}/package.json`)
     david.getUpdatedDependencies(manifest, this.davidConfig, (er, deps) => {
-      this.log.info('latest dependencies information for', manifest.name)
+      // this.log.info('latest dependencies information for', manifest.name)
       this.listDependencies(deps)
     })
 
@@ -27,7 +27,7 @@ export default class David extends Module {
       var required = deps[depName].required || '*'
       var stable = deps[depName].stable || 'None'
       var latest = deps[depName].latest
-      this.log.warn('%s Required: %s Stable: %s Latest: %s', depName, required, stable, latest)
+      this.log.warn('David: %s Required: %s Stable: %s Latest: %s', depName, required, stable, latest)
     })
   }
 }

@@ -17,7 +17,7 @@ class David extends module_1.Module {
             this.davidConfig = this.prepareConfig('david', david_1.default);
             const manifest = require(`${this.config.baseDirPath}/package.json`);
             david.getUpdatedDependencies(manifest, this.davidConfig, (er, deps) => {
-                this.log.info('latest dependencies information for', manifest.name);
+                // this.log.info('latest dependencies information for', manifest.name)
                 this.listDependencies(deps);
             });
             // david.getDependencies(manifest, this.davidConfig, (er, deps) => {
@@ -34,7 +34,7 @@ class David extends module_1.Module {
             var required = deps[depName].required || '*';
             var stable = deps[depName].stable || 'None';
             var latest = deps[depName].latest;
-            this.log.warn('%s Required: %s Stable: %s Latest: %s', depName, required, stable, latest);
+            this.log.warn('David: %s Required: %s Stable: %s Latest: %s', depName, required, stable, latest);
         });
     }
 }
