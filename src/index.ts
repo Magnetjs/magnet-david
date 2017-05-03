@@ -2,7 +2,7 @@ import { Module } from 'magnet-core/module'
 import * as david from 'david'
 
 export default class MagnetDavid extends Module {
-  get moduleName () { return 'graphql' }
+  get moduleName () { return 'david' }
   get defaultConfig () { return __dirname }
 
   async setup () {

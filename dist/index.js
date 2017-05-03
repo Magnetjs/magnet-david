@@ -10,13 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
 const david = require("david");
-const david_1 = require("./config/david");
-class David extends module_1.Module {
+class MagnetDavid extends module_1.Module {
+    get moduleName() { return 'david'; }
+    get defaultConfig() { return __dirname; }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.davidConfig = this.prepareConfig('david', david_1.default);
-            const manifest = require(`${this.config.baseDirPath}/package.json`);
-            david.getUpdatedDependencies(manifest, this.davidConfig, (er, deps) => {
+            const path = this.config.packageJsonPath;
+            this.app.config.baseDirPath;
+            const manifest = require(`${path}/package.json`);
+            david.getUpdatedDependencies(manifest, this.config, (er, deps) => {
                 // this.log.info('latest dependencies information for', manifest.name)
                 this.listDependencies(deps);
             });
@@ -28,7 +30,7 @@ class David extends module_1.Module {
     }
     listDependencies(deps) {
         Object.keys(deps).forEach((depName) => {
-            if (this.davidConfig.skips.includes(depName)) {
+            if (this.config.skips.includes(depName)) {
                 return;
             }
             var required = deps[depName].required || '*';
@@ -38,5 +40,5 @@ class David extends module_1.Module {
         });
     }
 }
-exports.default = David;
+exports.default = MagnetDavid;
 //# sourceMappingURL=index.js.map
