@@ -2,11 +2,11 @@ import { Module } from 'magnet-core/module'
 import * as david from 'david'
 
 export default class MagnetDavid extends Module {
-  get moduleName () { return 'graphql' }
+  get moduleName () { return 'david' }
   get defaultConfig () { return __dirname }
 
   async setup () {
-    const path = this.config.packageJsonPath || this.app.config.baseDirPath
+    const path = this.config.packageJsonPath  this.app.config.baseDirPath
     const manifest = require(`${path}/package.json`)
     david.getUpdatedDependencies(manifest, this.config, (er, deps) => {
       // this.log.info('latest dependencies information for', manifest.name)
