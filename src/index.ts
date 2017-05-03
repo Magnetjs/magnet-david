@@ -1,16 +1,14 @@
 import { Module } from 'magnet-core/module'
 import * as david from 'david'
 
-import defaultConfig from './config/david'
-
-export default class David extends Module {
-  davidConfig: any
+export default class MagnetDavid extends Module {
+  get moduleName () { return 'graphql' }
+  get defaultConfig () { return __dirname }
 
   async setup () {
-    this.davidConfig = this.prepareConfig('david', defaultConfig)
-
-    const manifest = require(`${this.config.baseDirPath}/package.json`)
-    david.getUpdatedDependencies(manifest, this.davidConfig, (er, deps) => {
+    const path = this.config.packageJsonPath || this.app.config.baseDirPath
+    const manifest = require(`${path}/package.json`)
+    david.getUpdatedDependencies(manifest, this.config, (er, deps) => {
       // this.log.info('latest dependencies information for', manifest.name)
       this.listDependencies(deps)
     })
@@ -23,7 +21,7 @@ export default class David extends Module {
 
   listDependencies (deps) {
     Object.keys(deps).forEach((depName) => {
-      if (this.davidConfig.skips.includes(depName)) { return }
+      if (this.config.skips.includes(depName)) { return }
       var required = deps[depName].required || '*'
       var stable = deps[depName].stable || 'None'
       var latest = deps[depName].latest
