@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "david": "^11.0.0",
-    "magnet-core": "^3.3.0"
+    "magnet-core": "^3.9.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
